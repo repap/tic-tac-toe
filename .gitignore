@@ -1,1 +1,21 @@
 node_modules
+# Node.js
+/node_modules
+
+# Dependency directories
+/.pnp
+.pnp.js
+
+# Testing
+/coverage
+
+# Production
+/build
+
+# Logs
+/logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
