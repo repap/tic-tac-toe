@@ -1,4 +1,4 @@
-const response = await fetch('http://localhost:3000')
+const response = await fetch('http://localhost:3000/start')
 
 console.log(response.status) // 200
 console.log(response.statusText) // OK
