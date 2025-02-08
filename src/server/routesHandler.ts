@@ -5,7 +5,7 @@ const rootDir = Deno.cwd()
 const STATIC_FOLDER_NAME = 'static'
 const BASE_FOLDER_NAME = 'routes'
 
-const STATIC_FOLDER_DIR = path.join(rootDir, STATIC_FOLDER_NAME)
+const STATIC_FOLDER_DIR = path.join(rootDir)
 const FILE_DIR = path.join(rootDir, 'src', 'server', BASE_FOLDER_NAME)
 
 

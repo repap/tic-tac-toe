@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Welcome to Tic-Tac-Toe</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      padding: 0;
+      margin: 0;
+    }
+
     .container {
       display: flex;
       justify-content: center;
@@ -15,12 +24,45 @@
       font-family: Arial, sans-serif;
       gap: 1rem;
     }
-    .welcome-container {
+
+    .element {
+      width: 480px;
       text-align: center;
       background: white;
       padding: 20px;
       border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);  
+    }
+
+    #chat {
+      text-align: left;
+      height: 480px;
+      overflow: hidden;
+      overflow-y: scroll;
+    }
+
+    #send {
+      padding: 0;
+      border-radius: 0;
+      background: transparent;
+      display: flex;
+    }
+    
+    #send form {
+      display: flex;
+      flex: 1;
+      gap: 1rem;
+    }
+
+    #send input {
+      display: flex;
+      flex: 6;
+      height: 40px;
+    }
+
+    #send button {
+      flex: 1;
+      height: 100%;
     }
 
     img {
@@ -37,13 +79,22 @@
 </head>
 <body>
   <div class="container">
-    <div class="welcome-container">
+    <div class="element">
       <h1>Welcome to Tic-Tac-Toe</h1>
       <p>Get ready to play the classic game of Tic-Tac-Toe!</p>
     </div>
-    <div>
-      <img src="static/test.jpg" width="250px" height="auto" />
+    <div id="chat" class="element">
+      <div class="wrapper">
+
+      </div>
+    </div>
+    <div id="send" class="element">
+      <form>
+        <input type="text" id="playerName" placeholder="Enter your name" />
+        <button>Send</button>
+      </form>
     </div>
   </div>
+  <script type="module" src="socket.js"></script>
 </body>
 </html>
