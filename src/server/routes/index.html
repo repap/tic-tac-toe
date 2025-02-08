@@ -5,13 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Welcome to Tic-Tac-Toe</title>
   <style>
-    body {
+    .container {
       display: flex;
       justify-content: center;
       align-items: center;
+      flex-direction: column;
       height: 100vh;
       background-color: #f0f0f0;
       font-family: Arial, sans-serif;
+      gap: 1rem;
     }
     .welcome-container {
       text-align: center;
@@ -29,9 +31,14 @@
   </style>
 </head>
 <body>
-  <div class="welcome-container">
-    <h1>Welcome to Tic-Tac-Toe</h1>
-    <p>Get ready to play the classic game of Tic-Tac-Toe!</p>
+  <div class="container">
+    <div class="welcome-container">
+      <h1>Welcome to Tic-Tac-Toe</h1>
+      <p>Get ready to play the classic game of Tic-Tac-Toe!</p>
+    </div>
+    <div>
+      <img src="static/test.jpg" width="250px" height="auto" />
+    </div>
   </div>
 </body>
 </html>

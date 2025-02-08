@@ -1,5 +1,6 @@
-import { handleHtmlRequest } from "./htmlHandler.ts";
+import { handleRoutes } from "./routesHandler.ts";
 import { handleWebsocket } from "./websocketHandler.ts";
+
 
 Deno.serve({port: 3000}, (req) => {
   console.log('request received: ', req.url, req.method, req.headers)
@@ -8,5 +9,5 @@ Deno.serve({port: 3000}, (req) => {
     return handleWebsocket(req)
   }
 
-  return handleHtmlRequest(req)
+  return handleRoutes(req)
 })
