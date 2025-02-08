@@ -1,17 +1,14 @@
 import { serveDir, serveFile } from "jsr:@std/http/file-server";
-
-
 import path from "node:path";
 
-const STATIC_FOLDER = '/static'
+const STATIC_FOLDER = 'static'
+const BASE_FOLDER = 'routes'
 const dirname = import.meta.dirname || ''
 
 
 export async function handleRoutes(req: Request): Promise<Response> {
   const fileRoute = await createFileRoute(req)
   
-  console.log(fileRoute.isStaticRoute)
-  console.log(fileRoute.staticDirectory)
   if(fileRoute.isStaticRoute) {
     console.log(fileRoute.staticDirectory)
     return serveDir(req, { fsRoot: fileRoute.staticDirectory })
@@ -35,17 +32,16 @@ type FileRoute = {
 
 async function createFileRoute(req: Request): Promise<FileRoute> {
   const staticDirectory = path.join(dirname, '..', '..')
+  const baseDirtectory = path.join(dirname, BASE_FOLDER)
   
-  const route = new URL(req.url).pathname;
-  const isStaticRoute = route.startsWith(STATIC_FOLDER);
-  
-  const isDirectory = route.endsWith('/');
-  
-  const basePath = path.join(dirname, 'routes')
+  const url = new URL(req.url)
+  const isStaticRoute = url.pathname.split('/')[1] === (STATIC_FOLDER)
 
+  const isDirectory = url.pathname.endsWith('/');
+  
   const filePath = isDirectory 
-  ? path.join(basePath, route, 'index.html') 
-  : path.join(basePath, route);
+    ? path.join(baseDirtectory, url.pathname, 'index.html') 
+    : path.join(baseDirtectory, url.pathname);
 
   return {
     isStaticRoute,
