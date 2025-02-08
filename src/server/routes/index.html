@@ -30,6 +30,7 @@
       text-align: center;
       background: white;
       padding: 20px;
+      border: 1px solid #bbb;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);  
     }
@@ -46,6 +47,8 @@
       border-radius: 0;
       background: transparent;
       display: flex;
+      box-shadow: none;
+      border: none;
     }
     
     #send form {
@@ -54,15 +57,21 @@
       gap: 1rem;
     }
 
+    #send form > * {
+      height: 40px;
+      border-radius: 5px;
+      border: 1px solid #bbb;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);  
+    }
+    
     #send input {
       display: flex;
       flex: 6;
-      height: 40px;
+      padding: 1rem;
     }
-
+    
     #send button {
       flex: 1;
-      height: 100%;
     }
 
     img {
