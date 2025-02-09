@@ -1,0 +1,9 @@
+services:
+  web:
+    image: denoland/deno:2.1.9
+    working_dir: /app
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    command: "deno run serve"
