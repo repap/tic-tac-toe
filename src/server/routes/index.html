@@ -4,108 +4,72 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Welcome to Tic-Tac-Toe</title>
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    html, body {
-      padding: 0;
-      margin: 0;
-    }
-
-    .container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      height: 100vh;
-      background-color: #f0f0f0;
-      font-family: Arial, sans-serif;
-      gap: 1rem;
-      padding: 0 .5rem;
-    }
-
-    .element {
-      width: 100%;
-      max-width: 480px;
-      text-align: center;
-      background: white;
-      padding: 20px;
-      border: 1px solid #bbb;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);  
-    }
-
-    #chat {
-      text-align: left;
-      height: 480px;
-      overflow: hidden;
-      overflow-y: scroll;
-    }
-
-    #send {
-      padding: 0;
-      border-radius: 0;
-      background: transparent;
-      display: flex;
-      box-shadow: none;
-      border: none;
-    }
-    
-    #send form {
-      display: flex;
-      flex: 1;
-      gap: 1rem;
-    }
-
-    #send form > * {
-      height: 40px;
-      border-radius: 5px;
-      border: 1px solid #bbb;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);  
-    }
-    
-    #send input {
-      display: flex;
-      flex: 6;
-      padding: 1rem;
-    }
-    
-    #send button {
-      flex: 1;
-    }
-
-    img {
-      border-radius: 10px;
-    }
-    
-    h1 {
-      color: #333;
-    }
-    p {
-      color: #666;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="dialog-styles.css">
+  <link rel="stylesheet" href="game-styles.css">
 </head>
 <body>
-  <div class="container">
-    <div class="element">
+  <dialog>
+    <form id="player-name-form">
+      <div>
+      <input type="text" name="player-name" placeholder="Enter Playername" required>
+      <button type="submit">Save</button>
+      </div>
+    </form>
+  </dialog>  
+  <div class="container hidden" id="welcome">
+    <div class="element background">
       <h1>Welcome to Tic-Tac-Toe</h1>
       <p>Get ready to play the classic game of Tic-Tac-Toe!</p>
     </div>
-    <div id="chat" class="element">
-      <div class="wrapper">
-
-      </div>
+    <div class="element wrapper">
+      <button>Create Game</button>
     </div>
-    <div id="send" class="element">
-      <form>
-        <input type="text" id="playerName" placeholder="Enter your name" />
-        <button>Send</button>
-      </form>
+    <div class="element wrapper horizontal">
+      <input type="text" name="game-id" placeholder="Enter Game-Id">
+      <button>join game</button>
     </div>
   </div>
-  <script type="module" src="socket.js"></script>
+  <div class="container">
+    <div class="element background">
+      Game-Id: xxx
+    </div>
+    <div class="element background" id="game">
+
+    </div>
+  </div>
+  <script>
+    const dialog = document.querySelector('dialog')
+    
+    // dialog.showModal()
+    
+    document.querySelector('dialog form').addEventListener('submit', e => {
+      e.preventDefault()
+      
+      playerName = e.target.elements['player-name'].value;
+      console.log(`Player Name: ${playerName}`);
+
+      dialog.close()
+    })
+
+    const game = document.querySelector('#game')
+
+    const elements = new Array(9).fill(null)
+
+    let lastValue = ''
+
+    elements.forEach(e => {
+      const div = document.createElement('div')
+      div.addEventListener('click', e => {
+        console.log('click')
+        console.log(e.target.innerHTML)
+        if(e.target.innerHTML === '') {
+          e.target.innerHTML = lastValue = lastValue !== 'X' ? 'X' : 'O'
+        }
+      })
+      game.append(div)
+    })
+
+  </script>
 </body>
 </html>

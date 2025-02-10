@@ -1,0 +1,16 @@
+#game {
+  display: grid;
+  width: 100%;
+  height: 480px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+
+#game > div {
+  font-size: 5rem;
+  font-weight: 900;
+  display: flex;
+  border: 1px solid #bbb;
+  align-items: center;
+  justify-content: center;
+}

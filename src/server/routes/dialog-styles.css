@@ -1,0 +1,31 @@
+::backdrop {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+dialog {
+  /* display: flex; */
+  align-items: center;
+  justify-content: center;
+  border: solid 1px #cecece;
+  /* border: none !important; */
+  padding: 1rem;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  width: 100%;
+  max-width: 420px;
+  border-radius: 5px;
+}
+
+dialog form {
+  flex: 1;
+  flex-direction: column;
+
+}
+
+dialog form div {
+  display: flex;
+  gap: 1rem;
+}
