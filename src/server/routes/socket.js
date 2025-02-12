@@ -1,21 +1,55 @@
-const ws = new WebSocket('/')
+function createUpdateHandler(stateHandler) {
+  return function(event) {
+    console.log(event.data)
+    if(!event.data) {
+      return
+    }
 
-export function createPlayer(playerName) {
-  throw new Error('function "createPlayer" not yet implemented')
+    const {msg, data} = JSON.parse(event.data)
+
+    if(msg !== 'update') {
+      return
+    }
+
+    stateHandler.updateState(data)
+  }
 }
 
-export function createGame() {
-  throw new Error('function "createGame" not yet implemented')
+export function createSocket(stateHandler){
+  const ws = new WebSocket('/')
+
+  const updateHandler = createUpdateHandler(stateHandler)
+
+  ws.addEventListener('open', updateHandler)
+  ws.addEventListener('message', updateHandler)
+  
+  return {
+    ws,
+    createPlayer: (playerName) => {
+      const payload = JSON.stringify({msg: 'createPlayer', data: {playerName}})
+      ws.send(payload)
+    },
+    
+    createGame: () => {
+      const payload = JSON.stringify({msg: 'createGame', data: {}})
+      ws.send(payload)
+    },
+    
+    joinGame: (gameId) => {
+      const payload = JSON.stringify({msg: 'joinGame', data: {gameId}})
+      ws.send(payload)
+    },
+    
+    makeMove: (move) => {
+      const payload = JSON.stringify({msg: 'makeMove', data: {move}})
+      ws.send(payload)
+    },
+    
+    highFive: () => {
+      const payload = JSON.stringify({msg: 'highFive', data: {}})
+      ws.send(payload)
+    },
+
+  }
 }
 
-export function joinGame(gameId, playerId) {
-  throw new Error('function "joinGame" not yet implemented');
-}
-
-export function makeMove(gameId, playerId, move) {
-  throw new Error('function "makeMove" not yet implemented');
-}
-
-export function highFive(playerId, targetPlayerId) {
-  throw new Error('function "highFive" not yet implemented');
-}

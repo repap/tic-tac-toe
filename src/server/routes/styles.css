@@ -54,6 +54,12 @@ div.wrapper.horizontal {
   flex-direction: row;
 }
 
+form {
+  display: flex;
+  flex: 1;
+  gap: 1rem;
+}
+
 input, button {
   height: 45px;
   border: solid 1px #cecece;

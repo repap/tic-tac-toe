@@ -17,59 +17,28 @@
       </div>
     </form>
   </dialog>  
-  <div class="container" id="welcome">
+  <div class="container gui-state hidden" id="welcome">
     <div class="element background">
       <h1>Welcome to Tic-Tac-Toe</h1>
       <p>Get ready to play the classic game of Tic-Tac-Toe!</p>
     </div>
     <div class="element wrapper">
-      <button>Create Game</button>
+      <button id="create-game">Create Game</button>
     </div>
-    <div class="element wrapper horizontal">
-      <input type="text" name="game-id" placeholder="Enter Game-Id">
-      <button>Join Game</button>
+    <div class="element wrapper horizontal" id="join-game">
+      <form>
+        <input type="text" name="game-id" placeholder="Enter Game-Id">
+        <button>Join Game</button>
+      </form>
     </div>
   </div>
-  <div class="container">
+  <div class="container gui-state hidden" id="game">
     <div class="element background">
       Game-Id: xxx
     </div>
-    <div class="element background" id="game">
-
+    <div class="element background" id="game-wrapper">
     </div>
   </div>
-  <script>
-    const dialog = document.querySelector('dialog')
-    
-    // dialog.showModal()
-    
-    document.querySelector('dialog form').addEventListener('submit', e => {
-      e.preventDefault()
-      
-      playerName = e.target.elements['player-name'].value;
-      console.log(`Player Name: ${playerName}`);
-
-      dialog.close()
-    })
-
-    const game = document.querySelector('#game')
-
-    const elements = new Array(9).fill(null)
-
-    let lastValue = ''
-
-    elements.forEach(e => {
-      const div = document.createElement('div')
-      div.addEventListener('click', e => {
-        console.log('click')
-        console.log(e.target.innerHTML)
-        if(e.target.innerHTML === '') {
-          e.target.innerHTML = lastValue = lastValue !== 'X' ? 'X' : 'O'
-        }
-      })
-      game.append(div)
-    })
-
-  </script>
+  <script type="module" src="main.js"></script>
 </body>
 </html>
