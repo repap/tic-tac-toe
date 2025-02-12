@@ -1,42 +1,21 @@
 const ws = new WebSocket('/')
 
-const chatContainer = document.querySelector('#chat .wrapper')
-const sendBtn = document.querySelector('#send button')
-const sendMsgContainer = document.querySelector('#send input')
+export function createPlayer(playerName) {
+  throw new Error('function "createPlayer" not yet implemented')
+}
 
-sendBtn.addEventListener('click', (event) => {
-  event.preventDefault()
+export function createGame() {
+  throw new Error('function "createGame" not yet implemented')
+}
 
-  const msg = sendMsgContainer.value
+export function joinGame(gameId, playerId) {
+  throw new Error('function "joinGame" not yet implemented');
+}
 
-  console.log(msg)
-  ws.send(JSON.stringify({msg}))
+export function makeMove(gameId, playerId, move) {
+  throw new Error('function "makeMove" not yet implemented');
+}
 
-  sendMsgContainer.value = ''
-})
-
-ws.addEventListener('open', (event) => {
-  console.log('open', event.data)
-})
-
-ws.addEventListener('message', (event) => {
-  console.log('message', event.data)
-  const msg = JSON.parse(event.data).msg
-  const msgElement = document.createElement('P')
-  msgElement.innerText = msg
-  chatContainer.append(msgElement)
-  
-  chatContainer.parentNode.scroll({
-    left: 0, 
-    top: chatContainer.offsetHeight, 
-    behavior: 'smooth',
-  })
-})
-
-ws.addEventListener('close', (event) => {
-  console.log('close', event.code, event.reason)
-})
-
-ws.addEventListener('error', (event) => {
-  console.error('error', event)
-})
+export function highFive(playerId, targetPlayerId) {
+  throw new Error('function "highFive" not yet implemented');
+}
