@@ -1,44 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome to Tic-Tac-Toe</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="dialog-styles.css">
-  <link rel="stylesheet" href="game-styles.css">
-</head>
-<body>
-  <dialog>
-    <form id="player-name-form">
-      <div>
-      <input type="text" name="player-name" placeholder="Enter Playername" required>
-      <button type="submit">Save</button>
-      </div>
-    </form>
-  </dialog>  
-  <div class="container gui-state hidden" id="welcome">
-    <div class="element background">
-      <h1>Welcome to Tic-Tac-Toe</h1>
-      <p>Get ready to play the classic game of Tic-Tac-Toe!</p>
-    </div>
-    <div class="element wrapper">
-      <button id="create-game">Create Game</button>
-    </div>
-    <div class="element wrapper horizontal" id="join-game">
-      <form>
-        <input type="text" name="game-id" placeholder="Enter Game-Id">
-        <button>Join Game</button>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Tic-Tac-Toe</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="dialog-styles.css">
+    <link rel="stylesheet" href="game-styles.css">
+  </head>
+  <body>
+    <dialog>
+      <form id="player-name-form">
+        <div>
+          <input
+            type="text"
+            name="player-name"
+            placeholder="Enter Playername"
+            required
+          >
+          <button type="submit">Save</button>
+        </div>
       </form>
+    </dialog>
+    <div class="container gui-state" id="welcome">
+      <div class="element background">
+        <h1>Welcome to Tic-Tac-Toe</h1>
+        <p>Get ready to play the classic game of Tic-Tac-Toe!</p>
+      </div>
+      <div class="element wrapper">
+        <button id="create-game">Create Game</button>
+      </div>
+      <div class="element wrapper horizontal">
+        <form id="join-game">
+          <input type="text" name="game-id" placeholder="Enter Game-Id">
+          <button>Join Game</button>
+        </form>
+      </div>
     </div>
-  </div>
-  <div class="container gui-state hidden" id="game">
-    <div class="element background">
-      Game-Id: xxx
+    <div class="container gui-state" id="game">
+      <div class="element background">
+        Game-Id: xxx
+      </div>
+      <div class="element background" id="game-wrapper"></div>
     </div>
-    <div class="element background" id="game-wrapper">
-    </div>
-  </div>
-  <script type="module" src="main.js"></script>
-</body>
+    <script type="module" src="main.js"></script>
+  </body>
 </html>

@@ -1,26 +1,26 @@
 export function createDialogSubmitHandler(socket) {
   return function (event) {
-    event.preventDefault()
+    event.preventDefault();
 
-    const playerName = event.target.elements['player-name'].value;
-    
-    socket.createPlayer(playerName)
-    event.target.parentNode.close()
-  }
+    const playerName = event.target.elements["player-name"].value;
+
+    socket.createPlayer(playerName);
+    event.target.parentNode.close();
+  };
 }
 
 export function createCreateGameHandler(socket) {
-  return function(event) {
-    event.preventDefault()
+  return function (event) {
+    event.preventDefault();
 
-    socket.createGame()
-  }
+    socket.createGame();
+  };
 }
 
 export function createJoinGameHandler(socket) {
-  return function(event) {
-    event.preventDefault()
+  return function (event) {
+    event.preventDefault();
 
-    socket.joinGame()
-  }
+    socket.joinGame();
+  };
 }

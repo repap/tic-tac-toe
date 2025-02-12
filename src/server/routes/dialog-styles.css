@@ -22,7 +22,6 @@ dialog {
 dialog form {
   flex: 1;
   flex-direction: column;
-
 }
 
 dialog form div {

@@ -1,23 +1,32 @@
 import { createSocket } from "./socket.js";
 import { createStateHandler } from "./state.js";
 import {
-createCreateGameHandler,
+  createCreateGameHandler,
   createDialogSubmitHandler,
-  createJoinGameHandler
-} from "./guiHandler.js"
-import { updateGuiState } from "./gui.js";
-    
-const stateHandler = createStateHandler([
-  updateGuiState
-])
+  createJoinGameHandler,
+} from "./guiHandler.js";
+import { updateGame, updateGuiState } from "./gui.js";
+import { createGameElement } from "./game.js";
 
-const socket = createSocket(stateHandler)
+(() => {
+  const stateHandler = createStateHandler([
+    updateGuiState,
+    updateGame,
+  ]);
 
-document.querySelector('dialog form')
-  .addEventListener('submit', createDialogSubmitHandler(socket))
+  const socket = createSocket(stateHandler);
 
-document.querySelector('#welcome button#create-game')
-  .addEventListener('click', createCreateGameHandler(socket))
+  createGameElement(socket);
 
-document.querySelector('#welcome form#join-game')
-  .addEventListener('click', createJoinGameHandler(socket))
+  document.querySelector("dialog form")
+    .addEventListener("submit", createDialogSubmitHandler(socket));
+
+  document.querySelector("#welcome button#create-game")
+    .addEventListener("click", createCreateGameHandler(socket));
+
+  document.querySelector("#welcome form#join-game")
+    .addEventListener("submit", createJoinGameHandler(socket));
+
+  document.querySelectorAll(".gui-state")
+    .forEach((e) => e.classList.add("hidden"));
+})();

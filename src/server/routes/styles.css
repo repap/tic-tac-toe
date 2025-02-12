@@ -23,7 +23,7 @@ body {
   flex-direction: column;
   /* height: 100vh; */
   gap: 1rem;
-  padding: 3rem .5rem;
+  padding: 3rem 0.5rem;
 }
 
 .element {

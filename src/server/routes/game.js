@@ -1,32 +1,19 @@
-export function createGameElement(){
-  const game = document.querySelector('#game-wrapper')
+export function createGameElement(socket) {
+  const game = document.querySelector("#game-wrapper");
 
-    const elements = new Array(9).fill(null)
+  const elements = new Array(9).fill(null);
 
-    let lastValue = ''
+  elements.forEach((_, i) => {
+    const div = document.createElement("div");
 
-    elements.forEach((_, i) => {
-      const div = document.createElement('div')
-      
-      div.dataset.field = i
+    div.dataset.field = i;
 
-      div.addEventListener('click', e => {
-        console.log('click')
-        console.log(e.target.innerHTML)
-        const currentValue = event.target.innerHTML
-        
-        if(!currentValue) {
-          e.target.innerHTML = lastValue = lastValue !== 'X' ? 'X' : 'O'
-        }
+    div.addEventListener("click", (_) => {
+      console.log("click");
+      const field = parseInt(event.target.dataset.field);
 
-        const field = event.target.dataset.field
-
-        if(!currentValue) {
-          return
-        }
-
-        socket.makeMove(field)
-      })
-      game.append(div)
-    })
+      socket.makeMove(field);
+    });
+    game.append(div);
+  });
 }
